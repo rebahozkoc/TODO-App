@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">TODO App</string>
-    <string name="add_button_descrp">Add Note Button</string>
+    <string name="add_button_descrp">Add Task Button</string>
     <string name="string_add_button_descrp" />
+    <string name="note_title_hint">Task Title</string>
+    <string name="task_title">Task Title:</string>
 </resources>
