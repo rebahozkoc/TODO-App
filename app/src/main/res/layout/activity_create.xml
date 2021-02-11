@@ -7,37 +7,77 @@
     tools:context=".ui.list.ListActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Screen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/taskTitleMsg"
+        android:id="@+id/createTaskTitle"
         style="@style/titleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/task_title"
-        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:text="@string/create_new_task"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:id="@+id/taskTitleMsg"
+        style="@style/subtitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/task_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createTaskTitle" />
+
+
+
     <EditText
         android:id="@+id/editTextNoteTitle"
+        style="@style/bodyStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/note_title_hint"
-        android:inputType="textPersonName"
+        android:hint="@string/task_title_hint"
+        android:inputType="textCapWords"
+        android:layout_marginBottom="8dp"
         android:text=""
-        style="@style/titleStyle"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskTitleMsg" />
 
+    <TextView
+        android:id="@+id/taskDescrpMsg"
+        style="@style/subtitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/task_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNoteTitle" />
+
+
+    <EditText
+        android:id="@+id/editTextNoteDescrp"
+
+        style="@style/bodyStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/task_description_hint"
+        android:inputType="textMultiLine"
+        android:text=""
+        android:minLines="3"
+        android:gravity="top|left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskDescrpMsg"
+        tools:ignore="RtlHardcoded" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_task"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNoteDescrp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
