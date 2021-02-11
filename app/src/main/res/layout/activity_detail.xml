@@ -7,12 +7,103 @@
     tools:context=".ui.list.ListActivity">
 
     <TextView
+        android:id="@+id/taskDetailTitle"
+        style="@style/titleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Detail Screen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/title_task_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/taskTitleMsg"
+        style="@style/subtitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/task_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskDetailTitle" />
+
+    <TextView
+        android:id="@+id/taskTitleContent"
+        style="@style/bodyStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Task Title comes here"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskTitleMsg" />
+
+    <TextView
+        android:id="@+id/taskDescrpMsg"
+        style="@style/subtitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/task_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskTitleContent" />
+
+    <TextView
+        android:id="@+id/taskDescrpContent"
+        style="@style/bodyStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Task description comes here \n \n \nTEST"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskDescrpMsg"
+        />
+
+    <TextView
+        android:id="@+id/taskDateMsg"
+        style="@style/subtitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/task_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskDescrpContent" />
+
+
+    <TextView
+        android:id="@+id/taskDate"
+        style="@style/bodyStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:enabled="false"
+        tools:text="DATE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskDateMsg"
+         />
+
+    <TextView
+        android:id="@+id/taskStatusMsg"
+        style="@style/subtitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/task_status"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskDate" />
+
+    <TextView
+        android:id="@+id/taskStatus"
+        style="@style/bodyStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:enabled="false"
+        tools:text="STATUS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskStatusMsg" />
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskStatus" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

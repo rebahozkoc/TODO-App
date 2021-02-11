@@ -1,19 +1,24 @@
 package com.example.todoapp.ui.create
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import androidx.core.content.ContextCompat.startActivity
+import android.widget.TextView
 import com.example.todoapp.R
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class CreateActivity : AppCompatActivity() {
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
+        val createDate = findViewById<TextView>(R.id.taskDate)
+        createDate.text = "Task created at: " + SimpleDateFormat("dd/M/yyyy hh:mm:ss").format(Date())
         val saveButton = findViewById<Button>(R.id.saveButton)
         saveButton.setOnClickListener{createTask()}
     }
@@ -35,6 +40,4 @@ class CreateActivity : AppCompatActivity() {
         val TaskDescrp = descrpEditText.text
         //Tamamlanacak
     }
-
-
 }

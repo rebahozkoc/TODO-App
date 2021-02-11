@@ -1,11 +1,20 @@
 <resources>
     <string name="app_name">TODO App</string>
-    <string name="add_button_descrp">Add Task Button</string>
+
     <string name="string_add_button_descrp" />
     <string name="task_title_hint">Task Title</string>
     <string name="task_description">Task Description:</string>
-    <string name="task_description_hint">Task Description...</string>
+    <string name="task_description_hint">Task Description…</string>
     <string name="create_new_task">Create New Task</string>
     <string name="task_title">Task Title:</string>
     <string name="save_task">Save Task</string>
+    <string name="radio_to_do">TO-DO</string>
+    <string name="radio_in_process">In Process</string>
+    <string name="radio_finished">Finished</string>
+    <string name="radio_failed">Failed</string>
+    <string name="radio_waiting">Waiting</string>
+    <string name="title_task_details">Task Details</string>
+    <string name="update_button">Update</string>
+    <string name="task_date">Task Date:</string>
+    <string name="task_status">Task Status:</string>
 </resources>
