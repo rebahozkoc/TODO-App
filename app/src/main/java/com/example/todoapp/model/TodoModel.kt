@@ -1,5 +1,8 @@
 package com.example.todoapp.model
 
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+
 data class TodoModel(val title: String,
                      val description: String,
                      val createdDate: String,
