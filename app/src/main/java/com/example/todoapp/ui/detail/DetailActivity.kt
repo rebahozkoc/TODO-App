@@ -7,11 +7,15 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import com.example.todoapp.R
+import com.example.todoapp.databinding.ActivityCreateBinding
+import com.example.todoapp.databinding.ActivityDetailBinding
 import com.example.todoapp.model.TodoModel
 import com.example.todoapp.model.TodoState
 import com.example.todoapp.ui.create.CreateActivity
 
 class DetailActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDetailBinding
 
     val todoModel = TodoModel(
         "Make Your Assignments",
@@ -22,10 +26,14 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        val view = binding.root
+        //setContentView(R.layout.activity_detail)
+        setContentView(view)
         updateUI(todoModel)
 
-        val clickableText =findViewById<Button>(R.id.updateButton)
+        //val clickableText =findViewById<Button>(R.id.updateButton)
+        val clickableText = binding.updateButton
         clickableText.setOnClickListener { CreateActivity.open(this) }
 
     }
@@ -39,10 +47,17 @@ class DetailActivity : AppCompatActivity() {
     }
 
     fun updateUI(todoModel: TodoModel) {
-        val taskTitleContent = findViewById<TextView>(R.id.taskTitleContent)
-        val taskDescrpContent = findViewById<TextView>(R.id.taskDescrpContent)
-        val taskDate = findViewById<TextView>(R.id.taskDate)
-        val taskStatus = findViewById<TextView>(R.id.taskStatus)
+
+        //val taskTitleContent = findViewById<TextView>(R.id.taskTitleContent)
+        //val taskDescrpContent = findViewById<TextView>(R.id.taskDescrpContent)
+        //val taskDate = findViewById<TextView>(R.id.taskDate)
+        //val taskStatus = findViewById<TextView>(R.id.taskStatus)
+
+
+        val taskTitleContent = binding.taskTitleContent
+        val taskDescrpContent = binding.taskDescrpContent
+        val taskDate = binding.taskDate
+        val taskStatus = binding.taskStatus
 
         taskTitleContent.text = todoModel.title
         taskDescrpContent.text = todoModel.description
