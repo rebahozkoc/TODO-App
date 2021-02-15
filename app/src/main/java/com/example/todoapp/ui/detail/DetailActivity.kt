@@ -22,8 +22,8 @@ class DetailActivity : AppCompatActivity() {
         if(todoModel != null) {
             updateUI(todoModel)
         }
-        binding.updateButton.setOnClickListener { CreateActivity.open(this, todoModel) }
 
+        initListeners(todoModel)
     }
 
     companion object {
@@ -48,5 +48,9 @@ class DetailActivity : AppCompatActivity() {
             TodoState.Failed -> binding.taskStatus.text = "Failed"
             TodoState.Waiting -> binding.taskStatus.text = "Waiting"
         }
+    }
+
+    private fun initListeners(todoModel: TodoModel?){
+        binding.updateButton.setOnClickListener { CreateActivity.open(this, todoModel) }
     }
 }
