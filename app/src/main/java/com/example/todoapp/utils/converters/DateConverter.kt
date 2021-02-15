@@ -7,3 +7,5 @@ import java.util.*
 @SuppressLint("SimpleDateFormat")
 fun getCreateDate(): String = "Task created on: " +
         SimpleDateFormat("dd/MM/yyyy").format(Date())
+
+fun getUpdateDate(dateString: String) = "Task created on: $dateString"

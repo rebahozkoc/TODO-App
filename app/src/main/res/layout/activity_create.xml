@@ -102,6 +102,7 @@
             android:id="@+id/radioInProcess"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#2196F3"
             android:enabled="false"
             android:text="@string/radio_in_process" />
 
@@ -109,6 +110,7 @@
             android:id="@+id/radioFinished"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#2196F3"
             android:text="@string/radio_finished"
             android:enabled="false"/>
 
@@ -116,6 +118,7 @@
             android:id="@+id/radioFailed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#2196F3"
             android:text="@string/radio_failed"
             android:enabled="false"/>
 
@@ -123,6 +126,7 @@
             android:id="@+id/radioWaiting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#2196F3"
             android:text="@string/radio_waiting"
             android:enabled="false"/>
     </RadioGroup>

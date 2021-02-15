@@ -5,10 +5,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import com.example.todoapp.R
-import com.example.todoapp.databinding.ActivityCreateBinding
 import com.example.todoapp.databinding.ActivityDetailBinding
 import com.example.todoapp.model.TodoState
 import com.example.todoapp.ui.create.CreateActivity
@@ -16,13 +12,7 @@ import com.example.todoapp.ui.create.CreateActivity
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
-
-    val todoModel = TodoModel(
-        "Make Your Assignments",
-        "Maths,\nLinear Algebra,\nHistory",
-        "11.02.2021",
-        TodoState.Waiting
-    )
+    private lateinit var todoModel: TodoModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +22,7 @@ class DetailActivity : AppCompatActivity() {
         if(todoModel != null) {
             updateUI(todoModel)
         }
-        binding.updateButton.setOnClickListener { CreateActivity.open(this) }
+        binding.updateButton.setOnClickListener { CreateActivity.open(this, todoModel) }
 
     }
 
@@ -46,22 +36,17 @@ class DetailActivity : AppCompatActivity() {
 
             }
         }
+
     fun updateUI(todoModel: TodoModel) {
-
-        val taskTitleContent = binding.taskTitleContent
-        val taskDescrpContent = binding.taskDescrpContent
-        val taskDate = binding.taskDate
-        val taskStatus = binding.taskStatus
-
-        taskTitleContent.text = todoModel.title
-        taskDescrpContent.text = todoModel.description
-        taskDate.text = todoModel.createdDate
+        binding.taskTitleContent.text = todoModel.title
+        binding.taskDescrpContent.text = todoModel.description
+        binding.taskDate.text = todoModel.createdDate
         when (todoModel.status) {
-            TodoState.Finished -> taskStatus.text = "Finished"
-            TodoState.InProcess -> taskStatus.text = "In Process"
-            TodoState.Todo -> taskStatus.text = "TO-DO"
-            TodoState.Failed -> taskStatus.text = "Failed"
-            TodoState.Waiting -> taskStatus.text = "Waiting"
+            TodoState.Finished -> binding.taskStatus.text = "Finished"
+            TodoState.InProcess -> binding.taskStatus.text = "In Process"
+            TodoState.Todo -> binding.taskStatus.text = "TO-DO"
+            TodoState.Failed -> binding.taskStatus.text = "Failed"
+            TodoState.Waiting -> binding.taskStatus.text = "Waiting"
         }
     }
 }
