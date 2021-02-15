@@ -2,16 +2,13 @@ package com.example.todoapp.ui.detail
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import com.example.todoapp.R
-import com.example.todoapp.databinding.ActivityCreateBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.example.todoapp.databinding.ActivityDetailBinding
 import com.example.todoapp.model.TodoModel
 import com.example.todoapp.model.TodoState
 import com.example.todoapp.ui.create.CreateActivity
+import com.example.todoapp.utils.extensions.toast
 
 class DetailActivity : AppCompatActivity() {
 
@@ -32,6 +29,9 @@ class DetailActivity : AppCompatActivity() {
         setContentView(view)
         updateUI(todoModel)
 
+        val todoModel = intent.extras?.getParcelable<TodoModel>(TODO_MODEL)
+        toast(todoModel?.title)
+
         //val clickableText =findViewById<Button>(R.id.updateButton)
         val clickableText = binding.updateButton
         clickableText.setOnClickListener { CreateActivity.open(this) }
@@ -39,8 +39,11 @@ class DetailActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun open(context: Context) {
-            val intent = Intent(context, DetailActivity::class.java)
+        private const val TODO_MODEL = "TODO_MODEL"
+        fun open(context: Context, todoModel: TodoModel) {
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                putExtra(TODO_MODEL, todoModel)
+            }
             context.startActivity(intent)
 
         }

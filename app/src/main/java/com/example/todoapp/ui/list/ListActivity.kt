@@ -6,6 +6,7 @@ import com.example.todoapp.data.DummyData
 import com.example.todoapp.databinding.ActivityListBinding
 import com.example.todoapp.model.TodoModel
 import com.example.todoapp.ui.create.CreateActivity
+import com.example.todoapp.ui.detail.DetailActivity
 import com.example.todoapp.ui.list.adapter.TodoAdapter
 import com.example.todoapp.utils.extensions.toast
 import com.example.todoapp.utils.listener.ClickListener
@@ -31,7 +32,7 @@ class ListActivity : AppCompatActivity() {
         binding.todoList.adapter = TodoAdapter(object : ClickListener<TodoModel> {
             override fun onClicked(data: TodoModel) {
                 //TODO navigate to detail screen
-                toast(data.title)
+                DetailActivity.open(this@ListActivity, data)
             }
 
         })
