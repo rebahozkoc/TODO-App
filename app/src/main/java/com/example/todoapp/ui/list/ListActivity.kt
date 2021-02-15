@@ -1,11 +1,14 @@
 package com.example.todoapp.ui.list
 
+import TodoModel
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todoapp.data.DummyData
 import com.example.todoapp.databinding.ActivityListBinding
-import com.example.todoapp.model.TodoModel
 import com.example.todoapp.ui.create.CreateActivity
+import com.example.todoapp.ui.detail.DetailActivity
 import com.example.todoapp.ui.list.adapter.TodoAdapter
 import com.example.todoapp.utils.extensions.toast
 import com.example.todoapp.utils.listener.ClickListener
@@ -30,8 +33,12 @@ class ListActivity : AppCompatActivity() {
     private fun setTodoAdapter() {
         binding.todoList.adapter = TodoAdapter(object : ClickListener<TodoModel> {
             override fun onClicked(data: TodoModel) {
-                //TODO navigate to detail screen
-                toast(data.title)
+                //val intent = Intent(this@ListActivity, DetailActivity::class.java)
+                //intent.putExtra("TODO_DATA", data)
+                startActivity(intent)
+                //toast(data.title)
+                DetailActivity.open(this@ListActivity, data)
+
             }
 
         })

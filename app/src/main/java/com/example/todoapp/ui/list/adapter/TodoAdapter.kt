@@ -1,8 +1,8 @@
 package com.example.todoapp.ui.list.adapter
 
+import TodoModel
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todoapp.model.TodoModel
 import com.example.todoapp.ui.list.viewholder.TodoHolder
 import com.example.todoapp.utils.listener.ClickListener
 

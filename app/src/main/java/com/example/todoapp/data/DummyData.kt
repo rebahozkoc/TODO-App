@@ -1,6 +1,6 @@
 package com.example.todoapp.data
 
-import com.example.todoapp.model.TodoModel
+import TodoModel
 import com.example.todoapp.model.TodoState
 
 object DummyData {

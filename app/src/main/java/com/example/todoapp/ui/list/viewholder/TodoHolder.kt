@@ -1,10 +1,10 @@
 package com.example.todoapp.ui.list.viewholder
 
+import TodoModel
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.databinding.ListItemTaskBinding
-import com.example.todoapp.model.TodoModel
 import com.example.todoapp.model.getDrawable
 import com.example.todoapp.utils.listener.ClickListener
 
