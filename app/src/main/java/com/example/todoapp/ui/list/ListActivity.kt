@@ -3,8 +3,12 @@ package com.example.todoapp.ui.list
 import TodoModel
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.todoapp.data.DummyData
+import com.example.todoapp.data.TaskDatabase
 import com.example.todoapp.databinding.ActivityListBinding
+import com.example.todoapp.model.TaskViewModel
+import com.example.todoapp.model.TaskViewModelFactory
 import com.example.todoapp.ui.create.CreateActivity
 import com.example.todoapp.ui.detail.DetailActivity
 import com.example.todoapp.ui.list.adapter.TodoAdapter
@@ -22,7 +26,11 @@ class ListActivity : AppCompatActivity() {
         initListeners()
 
         setTodoAdapter()
+        val application = requireNotNull(this).application
 
+        val dataSource = TaskDatabase.getInstance(application).taskDatabaseDao
+        val viewModelFactory = TaskViewModelFactory(dataSource, application)
+        val taskViewModel = ViewModelProvider(this, viewModelFactory).get(TaskViewModel::class.java)
         val list = DummyData.getList()
         (binding.todoList.adapter as? TodoAdapter)?.updateList(list)
     }
