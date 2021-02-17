@@ -1,6 +1,6 @@
 package com.example.todoapp.ui.detail
 
-import TodoModel
+import com.example.todoapp.model.TodoModel
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

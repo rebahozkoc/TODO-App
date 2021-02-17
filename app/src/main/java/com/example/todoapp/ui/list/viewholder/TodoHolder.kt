@@ -1,6 +1,6 @@
 package com.example.todoapp.ui.list.viewholder
 
-import TodoModel
+import com.example.todoapp.model.TodoModel
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
