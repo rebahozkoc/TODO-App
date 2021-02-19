@@ -25,5 +25,4 @@ class CreateViewModel(private val todoDao: TodoDao) : ViewModel() {
             todoDao.update(todoEntity)
         }
     }
-
 }

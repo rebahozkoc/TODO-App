@@ -3,13 +3,18 @@ package com.example.todoapp.ui.create
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.RadioButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.todoapp.App
+import com.example.todoapp.data.converters.TodoStateConverter
 import com.example.todoapp.databinding.ActivityCreateBinding
 import com.example.todoapp.model.TodoModel
 import com.example.todoapp.model.TodoState
+import com.example.todoapp.utils.converters.fromStringToTodoState
 import com.example.todoapp.utils.converters.getCreateDate
+import com.example.todoapp.utils.converters.getSimpleDate
 import com.example.todoapp.utils.converters.getUpdateDate
 
 class CreateActivity : AppCompatActivity() {
@@ -42,7 +47,7 @@ class CreateActivity : AppCompatActivity() {
             updateUI(todoModel)
         }
 
-        initListeners()
+        initListeners(todoModel)
 
     }
 
@@ -51,17 +56,13 @@ class CreateActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(CreateViewModel::class.java)
     }
 
-    fun createTask() {
-        //val titleEditText = binding.editTextNoteTitle
-        //val descrpEditText = binding.editTextNoteDescrp
-        //val TaskTitle = titleEditText.text
-        //val TaskDescrp = descrpEditText.text
-        //Tamamlanacak
+    private fun createTask() {
+        val todoModel = TodoModel(binding.editTextNoteTitle.text.toString(),
+            binding.editTextNoteDescrp.text.toString(),
+            getSimpleDate(),
+            TodoState.Todo)
 
-        /*TODO TodoModel oluşturulup içine input alanlarındaki data aktarılacak.
-            TodoModel aşağıdaki metoda verilecek
-         */
-        //viewModel.createTodo()
+        viewModel.createTodo(todoModel)
     }
 
     private fun updateUI(todoModel: TodoModel) {
@@ -83,7 +84,24 @@ class CreateActivity : AppCompatActivity() {
         }
     }
 
-    private fun initListeners() {
-        binding.saveButton.setOnClickListener { createTask() }
+    private fun updateTask(todoModel: TodoModel){
+        binding.radioStatus.checkedRadioButtonId
+        val newStatus = findViewById<RadioButton>(binding.radioStatus.checkedRadioButtonId)
+
+        // Delete this
+        Toast.makeText(this,
+            newStatus.getText(), Toast.LENGTH_SHORT).show()
+
+        val updatedTodoModel = TodoModel(binding.editTextNoteTitle.text.toString(),
+            binding.editTextNoteDescrp.text.toString(),
+            todoModel.createdDate,
+            fromStringToTodoState(newStatus.text.toString()),
+        todoModel.id)
+
+        viewModel.updateTodo(updatedTodoModel)
+    }
+
+    private fun initListeners(todoModel: TodoModel?) {
+        binding.saveButton.setOnClickListener { if (todoModel != null) updateTask(todoModel) else createTask() }
     }
 }
