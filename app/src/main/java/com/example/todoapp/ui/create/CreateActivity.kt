@@ -85,7 +85,6 @@ class CreateActivity : AppCompatActivity() {
     }
 
     private fun updateTask(todoModel: TodoModel){
-        binding.radioStatus.checkedRadioButtonId
         val newStatus = findViewById<RadioButton>(binding.radioStatus.checkedRadioButtonId)
 
         // Delete this
