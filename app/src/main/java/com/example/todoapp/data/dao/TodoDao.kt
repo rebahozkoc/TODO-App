@@ -8,7 +8,7 @@ import com.example.todoapp.data.entity.TodoEntity
 interface TodoDao {
 
     @Query("SELECT * FROM todos")
-    suspend fun findAll(): LiveData<List<TodoEntity>>
+    suspend fun findAll(): List<TodoEntity>
 
     @Insert
     suspend fun insert(todoEntity: TodoEntity)

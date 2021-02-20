@@ -17,6 +17,7 @@ object TodoMapper {
 
     fun toTodoModel(todoEntity: TodoEntity): TodoModel {
         return TodoModel(
+            id = todoEntity.id,
             title = todoEntity.title,
             description = todoEntity.description,
             createdDate = todoEntity.createdDate,
