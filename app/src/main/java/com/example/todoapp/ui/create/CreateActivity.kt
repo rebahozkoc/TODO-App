@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.todoapp.App
-import com.example.todoapp.data.converters.TodoStateConverter
 import com.example.todoapp.databinding.ActivityCreateBinding
 import com.example.todoapp.model.TodoModel
 import com.example.todoapp.model.TodoState
@@ -57,10 +56,16 @@ class CreateActivity : AppCompatActivity() {
     }
 
     private fun createTask() {
-        val todoModel = TodoModel(binding.editTextNoteTitle.text.toString(),
-            binding.editTextNoteDescrp.text.toString(),
-            getSimpleDate(),
-            TodoState.Todo)
+
+        val title = binding.editTextNoteTitle.text.toString()
+        val description = binding.editTextNoteDescrp.text.toString()
+
+        val todoModel = TodoModel(
+            title = title,
+            description = description,
+            createdDate = getSimpleDate(),
+            status = TodoState.Todo
+        )
 
         viewModel.createTodo(todoModel)
     }
@@ -84,23 +89,29 @@ class CreateActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateTask(todoModel: TodoModel){
+    private fun updateTask(todoModel: TodoModel) {
         val newStatus = findViewById<RadioButton>(binding.radioStatus.checkedRadioButtonId)
 
-        // Delete this
-        Toast.makeText(this,
-            newStatus.getText(), Toast.LENGTH_SHORT).show()
+        val title = binding.editTextNoteTitle.text.toString()
+        val description = binding.editTextNoteDescrp.text.toString()
 
-        val updatedTodoModel = TodoModel(binding.editTextNoteTitle.text.toString(),
-            binding.editTextNoteDescrp.text.toString(),
-            todoModel.createdDate,
-            fromStringToTodoState(newStatus.text.toString()),
-        todoModel.id)
+        val updatedTodoModel = TodoModel(
+            id = todoModel.id,
+            title = title,
+            description = description,
+            createdDate = todoModel.createdDate,
+            status = fromStringToTodoState(newStatus.text.toString()),
+        )
 
         viewModel.updateTodo(updatedTodoModel)
     }
 
     private fun initListeners(todoModel: TodoModel?) {
-        binding.saveButton.setOnClickListener { if (todoModel != null) updateTask(todoModel) else createTask() }
+        binding.saveButton.setOnClickListener {
+            if (todoModel != null)
+                updateTask(todoModel)
+            else
+                createTask()
+        }
     }
 }
